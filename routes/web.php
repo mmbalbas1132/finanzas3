@@ -31,4 +31,4 @@ Route::middleware([
 
 Route::resource('ingresos', IngresoController::class);
 Route::resource('gastos', GastoController::class);
-Route::resource('categorias', CategoryController::class);
+Route::resource('categories', CategoryController::class);

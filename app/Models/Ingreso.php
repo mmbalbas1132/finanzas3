@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Ingreso extends Model
 {
     use HasFactory;
+    protected $fillable = ['descripcion', 'monto', 'category_id'];
 }

@@ -31,9 +31,9 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
-        $gasto = new Gasto($request->all());
+        $gasto = new Gasto($request->only('descripcion', 'monto', 'category_id'));
         $gasto->save();
-
+    
         return redirect()->route('gastos.index');
     }
 
