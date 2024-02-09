@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\IngresoController;
+use App\Http\Controllers\GastoController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource('ingresos', IngresoController::class);
+Route::resource('gastos', GastoController::class);
+Route::resource('categorias', CategoryController::class);
