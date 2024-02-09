@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Ingreso;
 use Illuminate\Http\Request;
 
 class IngresoController extends Controller
@@ -11,7 +13,8 @@ class IngresoController extends Controller
      */
     public function index()
     {
-        //
+        $ingresos = Ingreso::all();
+        return view('ingresos.index', compact('ingresos'));
     }
 
     /**
@@ -19,7 +22,8 @@ class IngresoController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('ingresos.create', compact('categories'));
     }
 
     /**
@@ -27,38 +31,46 @@ class IngresoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ingreso = new Ingreso($request->all());
+        $ingreso->save();
+
+        return redirect()->route('ingresos.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Ingreso $ingreso)
     {
-        //
+        return view('ingresos.show', compact('ingreso'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Ingreso $ingreso)
     {
-        //
+        $categories = Category::all();
+        return view('ingresos.edit', compact('ingreso', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Ingreso $ingreso)
     {
-        //
+        $ingreso->update($request->all());
+
+        return redirect()->route('ingresos.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Ingreso $ingreso)
     {
-        //
+        $ingreso->delete();
+
+        return redirect()->route('ingresos.index');
     }
 }
