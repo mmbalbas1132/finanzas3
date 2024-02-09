@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Gasto;
 use Illuminate\Http\Request;
 
 class GastoController extends Controller
@@ -11,7 +13,8 @@ class GastoController extends Controller
      */
     public function index()
     {
-        //
+        $gastos = Gasto::all();
+        return view('gastos.index', compact('gastos'));
     }
 
     /**
@@ -19,7 +22,8 @@ class GastoController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('gastos.create', compact('categories'));
     }
 
     /**
@@ -27,38 +31,46 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gasto = new Gasto($request->all());
+        $gasto->save();
+
+        return redirect()->route('gastos.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Gasto $gasto)
     {
-        //
+        return view('gastos.show', compact('gasto'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Gasto $gasto)
     {
-        //
+        $categories = Category::all();
+        return view('gastos.edit', compact('gasto', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Gasto $gasto)
     {
-        //
+        $gasto->update($request->all());
+
+        return redirect()->route('gastos.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Gasto $gasto)
     {
-        //
+        $gasto->delete();
+
+        return redirect()->route('gastos.index');
     }
 }
