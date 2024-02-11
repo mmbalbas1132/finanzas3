@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container bg-yellow-50 rounded mx-auto" >
+<div class="container max-w-7xl bg-yellow-50 rounded mx-auto" >
     <h1 class="text-4xl text-center mt-8 pt-5" >Listado de categorías</h1>
 
     <table  class="md:table-fixed mx-auto mt-10 mb-4 p-5 w-3/4 ">
