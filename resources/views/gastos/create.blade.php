@@ -9,6 +9,10 @@
             @csrf
 
             <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="text" name="fecha" id="fecha" class="form-control">
+
+            </div> <div class="form-group">
                 <label for="descripcion">Descripción</label>
                 <input type="text" name="descripcion" id="descripcion" class="form-control">
             </div>

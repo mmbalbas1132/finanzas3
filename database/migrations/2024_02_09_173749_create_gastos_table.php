@@ -13,6 +13,7 @@ class CreateGastosTable extends Migration
     {
         Schema::create('gastos', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha') ->index()->default('2024-02-09');
             $table->string('descripcion');
             $table->decimal('monto', 8, 2);
             $table->unsignedBigInteger('category_id');

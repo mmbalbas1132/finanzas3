@@ -9,5 +9,5 @@ class Gasto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descripcion', 'monto', 'category_id'];
+    protected $fillable = ['fecha','descripcion', 'monto', 'category_id'];
 }
