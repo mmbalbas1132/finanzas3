@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container max-w-7xl bg-yellow-50 rounded mx-auto" >
-    <h1 class="text-4xl text-center mt-8 pt-5" >Listado de categorías</h1>
+<div class="container max-w-7xl bg-yellow-50  mx-auto shadow-md p-6 rounded-lg" >
+    <h1 class="text-4xl text-center mt-8 pt-5" >{{__('List of categories')}}</h1>
 
-    <table  class="md:table-fixed mx-auto mt-10 mb-4 p-5 w-3/4 ">
-        <thead class="bg-gray-300 p-4">
-            <tr class="border-4">
-                <th class="text-2xl  font-bold text-left pl-5">Nombre</th>
-                <th class="text-2xl font-bold">Acción</th>
+    <table  class="md:table-fixed mx-auto mt-10 mb-4 p-5 w-3/4 bg-gray-200 border-collapse border border-black ">
+        <thead class="bg-gray-300 border border-black px-4 py-2">
+            <tr class="border-b border-black">
+                <th class="text-2xl  font-bold text-left pl-5">{{__('Name')}}</th>
+                <th class="text-2xl font-bold">{{__('Action')}}</th>
 
             </tr>
         </thead>
         <tbody>
             @foreach ($categories as $category)
-                <tr class="text-center border-4">
+                <tr class="text-center border-b border-black px-4 py-2">
                     <td class="text-xl text-left pl-5 ">{{ $category->name }}</td>
                     <td>
 

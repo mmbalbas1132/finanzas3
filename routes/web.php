@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocaleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +34,7 @@ Route::middleware([
 Route::resource('ingresos', IngresoController::class);
 Route::resource('gastos', GastoController::class);
 Route::resource('categories', CategoryController::class);
+
+Route::get('setlocale/{locale}', [LocaleController::class, 'setLocale'])->name('setLocale');
+
+
