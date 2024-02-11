@@ -1,20 +1,25 @@
-<div>
-    @extends('layouts.app')
+@extends('layouts.app')
 
-    @section('content')
-    <div class="container">
-        <h1>Crear nueva categoría</h1>
-    
-        <form action="{{ route('categories.store') }}" method="POST">
-            @csrf
-    
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" name="name" id="name" class="form-control">
-            </div>
-    
-            <button type="submit" class="btn btn-primary">Crear</button>
-        </form>
-    </div>
-    @endsection
+@section('content')
+<div class="container">
+    <h1>Listado de categorías xxxxx</h1>
+
+    <a href="{{ route('categories.create') }}">Crear nueva categoría</a>
+
+    <ul>
+        @foreach ($categories as $category)
+            <li>
+                <a href="{{ route('categories.show', $category) }}">
+                    {{ $category->name }}
+                </a>
+                <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary">Editar</a>
+                <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </li>
+        @endforeach
+    </ul>
 </div>
+@endsection
