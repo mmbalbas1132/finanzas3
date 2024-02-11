@@ -35,8 +35,7 @@
                 </select>
                 <button type="button" onclick="window.location.href='{{ route('categories.create') }}';" class="btn btn-primary">Crear categoría</button>
                 <br>
-
-            <button type="submit" class="btn btn-primary">Crear</button>
+             <x-button-blue type="submit" class="text-white bg-blue-500">Crear</x-button-blue>
 
         </form>
     </div>
