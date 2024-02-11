@@ -31,11 +31,28 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
-        $gasto = new Gasto($request->only('descripcion', 'monto', 'category_id'));
+        // Definir las reglas de validación
+        $rules = [
+            'fecha' => 'required|date',
+            'monto' => 'required|numeric|min:0',
+            'descripcion' => 'required|string|min:3|max:255',
+            'category_id' => 'required|exists:categories,id',
+        ];
+
+        // Validar los datos del formulario
+        $validatedData = $request->validate($rules);
+
+        // Crear el gasto si la validación es exitosa
+        $gasto = new Gasto();
+        $gasto->fecha = $validatedData['fecha'];
+        $gasto->monto = $validatedData['monto'];
+        $gasto->descripcion = $validatedData['descripcion'];
+        $gasto->category_id = $validatedData['category_id'];
         $gasto->save();
-    
+
         return redirect()->route('gastos.index');
     }
+
 
     /**
      * Display the specified resource.

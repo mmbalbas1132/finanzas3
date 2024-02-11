@@ -9,7 +9,8 @@
 
             <div class="form-group">
                 <label for="name">Nombre</label>
-                <input type="text" name="name" id="name" class="form-control">
+                <x-validation-errors field="name" />
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Crear</button>

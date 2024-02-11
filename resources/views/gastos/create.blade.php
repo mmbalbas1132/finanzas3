@@ -10,20 +10,24 @@
 
             <div class="form-group">
                 <label for="fecha">Fecha</label>
-                <input type="text" name="fecha" id="fecha" class="form-control">
+                <x-validation-errors field="fecha" />
+                <input type="date" name="fecha" id="fecha" class="form-control"  value="{{ old('fecha') }}">
 
             </div> <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <input type="text" name="descripcion" id="descripcion" class="form-control">
+                <x-validation-errors field="descripcion" />
+                <input type="text" name="descripcion" id="descripcion" class="form-control"  value="{{ old('descripcion') }}">
             </div>
 
             <div class="form-group">
                 <label for="monto">Monto</label>
-                <input type="number" step="0.01" name="monto" id="monto" class="form-control">
+                <x-validation-errors field="monto" />
+                <input type="number" step="0.01" name="monto" id="monto" class="form-control"  value="{{ old('monto') }}">
             </div>
 
             <div class="form-group">
                 <label for="category_id">Categoría</label>
+                <x-validation-errors field="category_id" />
                 <select name="category_id" id="category_id" class="form-control" required>
                     @foreach ($categories->sortBy(function($category) { return strtolower($category->name); }) as $category)
                         <option value="{{ $category->id }}">{{ strtoupper($category->name) }}</option>

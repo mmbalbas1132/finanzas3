@@ -29,7 +29,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category($request->all());
+
+        // Definir las reglas de validación
+        $rules = [
+            'name' => 'required|string|min:3|max:255',
+        ];
+        // Validar los datos del formulario
+        $validatedData = $request->validate($rules);
+
+        // Crear la categoría si la validación es exitosa
+        $category = new Category();
+        $category->name = $validatedData['name'];
         $category->save();
 
         return redirect()->route('categories.index');
